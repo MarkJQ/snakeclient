@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> client </title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/override.css">
+
+
+
+</head>
+<body>
+<!--the wrapper is the background -->
+<div class="wrapper">
+
+    <!-- the container is the box that contains the login input fields and button -->
+     <div class="container">
+         <h1> <span class="glyphicon glyphicon-fire"></span> Snake Slayer  </h1>
+
+<!-- specifies the id, type & class for both input fields & button -->
+         <form id="loginform" method="post">
+             <input type="text" id=userfrm placeholder="Username">
+             <input type="password" id=passfrm placeholder="Password">
+             <button class="loginbutton" type="submit" id="login-button">Login</button>
+                 <br>
+                 <br>
+             <a href="signup.html"> Create User </a>
+
+         </form>
+
+     </div>
+     <!--creates the "bubble" effect in the background-->
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+
+    <script src="js/lib/jquery-2.1.4.min.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <script src="js/client.js"></script>
+
+    </body>
+    </html>
