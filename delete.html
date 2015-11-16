@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
 
     <title>Scores in Snake Slayer</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css"  type="text/css">
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/deleteoverride.css" type="text/css">
+    <link rel="stylesheet" href="css/override.css" type="text/css">
 
 </head>
 
@@ -19,11 +20,22 @@
     <div id='cssmenu'>
         <ul>
             <li><a href='game.html'> <span class="glyphicon glyphicon-fire"></span> Snake Slayer </a></li>
-            <li><a href='scores.html'><span class="glyphicon glyphicon-flag"> Scores</span></a></li>
-            <li class='active'><a href='delete.html'><span class="glyphicon glyphicon-remove"> Delete </span></a></li>
-            <li><a href='index.html'><span class="glyphicon glyphicon-thumbs-down"> Logout </span></a></li>
+            <li><a href='scores.html'><span class="glyphicon glyphicon-flag"></span></a></li>
+            <li class='active'><a href='delete.html'><span class="glyphicon glyphicon-erase"></span></a></li>
+            <li><a href='index.html'><span class="glyphicon glyphicon-share-alt"></span></a></li>
 
         </ul>
+    </div>
+
+    <!-- Delete DIV!! it uses index/override CSS therefore it is still named container -->
+    <div class="container">
+        <h1> <span class="glyphicon glyphicon-fire"></span> Snake Slayer  </h1>
+        <!-- specifies the id, type & class for both input field & button -->
+        <form id="deleteform" method="post">
+            <input type="text" id=gamefrm placeholder="Enter GameID to delete..." name="game">
+            <button class="deletebutton" type="submit" id="login-button"  value ="post"><span class="glyphicon glyphicon-erase"></span></button>
+
+        </form>
 
     </div>
 
@@ -45,6 +57,7 @@
 
 <script src="js/lib/jquery-2.1.4.min.js"></script>
 <script src="js/lib/bootstrap.js"></script>
+<script src="js/client.js"></script>
 
 
 </body>
