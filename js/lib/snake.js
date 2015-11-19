@@ -1,6 +1,8 @@
 /**
  * Created by MarkJ on 11-11-2015.
  */
+
+/* Kildekode fra: */
 function rgbToHex(r, g, b) {
     if (r > 255 || g > 255 || b > 255)
         throw "Invalid color component";
