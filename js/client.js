@@ -23,6 +23,9 @@ $("#loginform").submit(function(e) {
         {
             console.log(response.message); // show response
             if(response.userid) {
+
+                userid = response.userid;
+                document.cookie=userid;
                 window.location.href = 'game.html';
 
             }
@@ -62,5 +65,46 @@ $("#deleteform").submit(function(e) {
 
 
 
+
     e.preventDefault(); // avoid to execute the actual submit of the form.
+});
+
+$.get("http://localhost:14555/api/scores",   function( data )  {
+
+    for (var i=0;i<data.length && i < 10 ;++i)
+    {
+        $('#top10 tr:last').after('<tr>' +
+            '<td>' + (i+1) + '</td>' +
+            '<td>' + data[i].user.firstName +" "+ data[i].user.lastName + '</td>' +
+            '<td>' + data[i].score + '</td>' +
+            '</tr>');
+    }
+    console.log(data)
+
+});
+
+var userid = document.cookie;
+
+$.get("http://localhost:14555/api/games/host/"+ userid + "/", function( data )  {
+    for (var i=0;i<data.length;++i)
+    {
+        $('#games tr:last').after('<tr>' +
+            '<td>' + data[i].name + '</td>' +
+            '<td>' + data[i].gameId + '</td>' +
+
+            '</tr>');
+    }
+    console.log(data)
+
+});
+
+// Opponents on click list
+$.get("http://localhost:14555/api/users/", function( data )  {
+    console.log(data)
+    for (var i=0;i<data.length;++i)
+    {
+        $('#frmOpponent')
+            .append($('<option>', { value : data[i].id })
+                .text(data[i].firstName + " " + data[i].lastName + " (" + data[i].username + ")"));
+    }
 });

@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Scores in Snake Slayer</title>
+    <title>Delete in Snake Slayer</title>
     <link rel="stylesheet" href="css/bootstrap.css"  type="text/css">
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/deleteoverride.css" type="text/css">
-    <link rel="stylesheet" href="css/override.css" type="text/css">
 
 </head>
 
@@ -29,6 +28,21 @@
 
     <!-- Delete DIV!! it uses index/override CSS therefore it is still named container -->
     <div class="container">
+        <!-- games deleted table -->
+        <div class="pendinggames">
+            <table id="games">
+
+
+                <tr>
+                    <th width="500px">Name</th>
+                    <th width="100px">ID</th>
+
+                </tr>
+
+
+            </table>
+
+        </div>
         <h1> <span class="glyphicon glyphicon-fire"></span> Snake Slayer  </h1>
         <!-- specifies the id, type & class for both input field & button -->
         <form id="deleteform" method="post">

@@ -2,7 +2,7 @@
  * Created by MarkJ on 11-11-2015.
  */
 
-/* Kildekode fra: */
+/* property of: snake.pixelfabrikken.net */
 function rgbToHex(r, g, b) {
     if (r > 255 || g > 255 || b > 255)
         throw "Invalid color component";
@@ -177,4 +177,34 @@ $(document).bind("keydown", function(e){
     $("#movements span").text("("+numMoves+")");
 
 
+});
+
+function ConvertFormToJSON(form){
+    var array = jQuery("form").serializeArray();
+    var json = {};
+    jQuery.each(array, function() {
+        json[this.name] = this.value || '';
+    });
+    console.log(json);
+    return json;
+}
+// this is the id of the form
+$("#idForm").submit(function(e) {
+    var GameName = $('#frmGameName').val();
+    var Opponent = $('#frmOpponent').val();
+    var Host = $('#frmHost').val();
+    var HostControls = host_movements;
+    var url = "http://localhost:14555/api/game/"; // the script where you handle the form input.
+    var data = '{"gameName": "' + GameName + '", "opponent": '+ Opponent +', "host": '+ Host +', "hostControls": "' + HostControls + '"}';
+    $.ajax({
+        type: "POST",
+        url: url,
+        dataType: "JSON",
+        data: data, // serializes the form's elements.
+        success: function(response)
+        {
+            console.log(response.message); // show respons
+        }
+    });
+    e.preventDefault(); // avoid to execute the actual submit of the form.
 });
