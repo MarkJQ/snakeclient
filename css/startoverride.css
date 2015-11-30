@@ -300,11 +300,11 @@ form select {
     border: 1px #606c88;
 }
 
-form input[type="button"] {
+form input[type="submit"] {
     width:380px;
     position: absolute;
     padding: 10px 40px;
-    margin: 130px 50px 0 0;
+    margin: 400px 50px 0 0;
     border-radius: 6px;
     border: 1px #606c88;
     font-family: 'Proxima Nova Light', Arial, sans-serif;

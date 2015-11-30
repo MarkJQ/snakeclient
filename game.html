@@ -40,7 +40,7 @@
     $(function() {
         $("#container").fadeTo("slow",1);
     });
-    $.get("http://localhost:9998/api/user/", function( data )  {
+    $.get("http://localhost:14555/api/user/", function( data )  {
         //$( ".result" ).html( data );
         for (var i=0;i<data.length;++i)
         {
@@ -57,10 +57,10 @@
     <div id='cssmenu'>
             <ul>
                 <li class='active'><a href='game.html'> <span class="glyphicon glyphicon-fire"></span> Snake Slayer </a></li>
+                <li><a href='join.html'><span class="glyphicon glyphicon-play"></span></a></li>
                 <li><a href='scores.html'><span class="glyphicon glyphicon-flag"></span></a></li>
                 <li><a href='delete.html'><span class="glyphicon glyphicon-erase"></span></a></li>
-                <li><a href='index.html'><span class="glyphicon glyphicon-share-alt"></span></a></li>
-
+                <li><a href='index.html'><span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
 
     </div>
@@ -77,23 +77,21 @@
 
         <div id="form">
             <form id="idForm" method="post">
+
                 <label>Game Name</label>
                 <input type="text" name="frmGameName" id="frmGameName">
                 <label>Opponent</label>
                 <select name="frmOpponent" id="frmOpponent">
                     <optgroup label="Select Opponent">
-                    </optgroup>
-                </select>
 
-                <label>Join game</label>
-                <select name="frmJoingame" id="frmJoingame">
-                    <optgroup label="Select game to join">
+
                     </optgroup>
-                </select>
+
 
                 <input type="hidden" name="frmHost" id="frmHost" value="3">
                 <input type="hidden" name="frmHostControls" id="frmHostControls">
-                <input type="submit" value="Start Game">
+                <input type="button" value="Create Game" id="create">
+
             </form>
 
         </div><!--#form-->
@@ -109,8 +107,8 @@
 </div><!--#OVERLAY-->
 
 <script src="js/lib/snake.js"></script>
-<script>
-</script>
+<script src="js/lib/bootstrap.js"></script>
+<script src="js/client.js"></script>
 
 </body>
     </html>
