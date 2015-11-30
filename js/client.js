@@ -40,7 +40,7 @@ $("#loginform").submit(function (e) {
             console.log(response.message); // show response
             if (response.userid) {
 
-                setCookie('userid', response.userid)
+                setCookie('userid', response.userid);
                 window.location.href = 'game.html';
 
             }
@@ -152,7 +152,7 @@ $.get("http://localhost:14555/api/scores/", function (data) {
     for (var i = 0; i < data.length && i < 10; ++i) {
         $('#top10 tr:last').after('<tr>' +
             '<td>' + (i + 1) + '</td>' +
-            '<td>' + data[i].user.firstName + " " + data[i].user.lastName + " (" + data[i].user.username + ")" +'</td>' +
+            '<td>' + data[i].user.firstName + " " + data[i].user.lastName + " (" + data[i].user.username + ")" + '</td>' +
             '<td>' + data[i].score + '</td>' +
             '</tr>');
     }
@@ -179,26 +179,26 @@ $("#join-button").click(function (e) {
 });
 
 // start game function
-$("#start").click(function(e) {
+$("#start").click(function (e) {
     var GameId = getCookie('joinId');
     var OpponentControls = host_movements;
     var url = "http://localhost:14555/api/games/start"; // the script where you handle the form input.
-    var data = '{"gameId": ' + GameId + ', "opponent": {"controls" : "'+ OpponentControls + '"}}';
+    var data = '{"gameId": ' + GameId + ', "opponent": {"controls" : "' + OpponentControls + '"}}';
 
     $.ajax({
         type: "POST",
         url: url,
         dataType: "JSON",
         data: data, // serializes the form's elements.
-        error: function(response) {
+        error: function (response) {
             alert("Something went wrong")
 
         },
-        success: function(response)
-        {
+        success: function (response) {
             alert("game started")
-            window.location.href=('game.html');
+            window.location.href = ('game.html');
             console.log(response.message); // show response
 
         }
-    });})
+    });
+})

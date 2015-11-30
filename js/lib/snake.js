@@ -46,7 +46,8 @@ function drawLeft() {
         $("#notification").text("MOVE A LITTLE RIGHT, JUST SAVED YA BRO.").fadeTo('slow', 1).fadeTo('slow', 0);
         $("#grid").effect("highlight", 400);
         return false;
-    };
+    }
+    ;
 
     // Looking up the color of the future tile. If taken, error out.
     var currentLeft = ctx.getImageData(cx - tile_size, cy, tile_size, tile_size).data;
@@ -82,14 +83,16 @@ function drawUp() {
 
         $("#grid").effect("highlight", 400);
         return false;
-    };
+    }
+
     // Looking up the color of the future tile. If red, error out.
     var p = ctx.getImageData(cx, cy - tile_size, tile_size, tile_size).data;
     var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
     if (hex == "#e74c3c") {
         alert("DEAD MOTHERFUCKER!");
         return false;
-    };
+    }
+
     ctx.fillRect(cx, cy - tile_size, tile_size, tile_size);
     cy = cy - tile_size;
     numMoves += 1;
@@ -105,14 +108,17 @@ function drawRight() {
     if (cx > (canvas_size - tile_size * 2)) {
         $("#notification").text("MOVE A LITTLE LEFT, JUST SAVED YA BRO.").fadeTo('slow', 1).fadeTo('slow', 0);
         $("#grid").effect("highlight", 400);
-        return false;};
+        return false;
+    }
+
     // Looking up the color of the future tile. If red, error out.
     var p = ctx.getImageData(cx + tile_size, cy, tile_size, tile_size).data;
     var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
     if (hex == "#e74c3c") {
         alert("DEAD MOTHERFUCKER!");
         return false;
-    };
+    }
+
     ctx.fillRect(cx + tile_size, cy, tile_size, tile_size);
     cx = cx + tile_size;
     numMoves += 1
@@ -126,14 +132,17 @@ function drawDown() {
     if (cy > (canvas_size - tile_size * 2)) {
         $("#notification").text("MOVE A LITTLE UP, JUST SAVED YA BRO.").fadeTo('slow', 1).fadeTo('slow', 0);
         $("#grid").effect("highlight", 400);
-        return false;};
+        return false;
+    }
+
     var p = ctx.getImageData(cx, cy + tile_size, tile_size, tile_size).data;
     var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
     if (hex == "#e74c3c") {
         alert("DEAD MOTHERFUCKER!");
 
         return false;
-    };
+    }
+
     ctx.fillRect(cx, cy + tile_size, tile_size, tile_size);
     cy = cy + tile_size;
     numMoves += 1
@@ -147,10 +156,9 @@ function drawDown() {
 
 }
 
-$(document).bind("keydown", function(e){
+$(document).bind("keydown", function (e) {
 
-    switch(e.keyCode)
-    {
+    switch (e.keyCode) {
         //left
         case 37:
             drawLeft();
@@ -174,35 +182,34 @@ $(document).bind("keydown", function(e){
 
     //console.log(host_movements);
     //$("#coords").text("X: " + cx + ", Y: " + cy);
-    $("#movements span").text("("+numMoves+")");
+    $("#movements span").text("(" + numMoves + ")");
 
 
 });
 
-function ConvertFormToJSON(form){
+function ConvertFormToJSON(form) {
     var array = jQuery("form").serializeArray();
     var json = {};
-    jQuery.each(array, function() {
+    jQuery.each(array, function () {
         json[this.name] = this.value || '';
     });
     console.log(json);
     return json;
 }
 // this is the id of the form
-$("#idForm").submit(function(e) {
+$("#idForm").submit(function (e) {
     var GameName = $('#frmGameName').val();
     var Opponent = $('#frmOpponent').val();
     var Host = $('#frmHost').val();
     var HostControls = host_movements;
     var url = "http://localhost:14555/api/game/"; // the script where you handle the form input.
-    var data = '{"gameName": "' + GameName + '", "opponent": '+ Opponent +', "host": '+ Host +', "hostControls": "' + HostControls + '"}';
+    var data = '{"gameName": "' + GameName + '", "opponent": ' + Opponent + ', "host": ' + Host + ', "hostControls": "' + HostControls + '"}';
     $.ajax({
         type: "POST",
         url: url,
         dataType: "JSON",
         data: data, // serializes the form's elements.
-        success: function(response)
-        {
+        success: function (response) {
             console.log(response.message); // show respons
         }
     });
